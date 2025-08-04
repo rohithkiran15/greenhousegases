@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌍 Supply Chain Emission Prediction</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right, #d3cce3, #e9e4f0);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .container {
+        max-width: 650px;
+        margin: 60px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #5a189a;
+      }
+      .form-label {
+        font-weight: bold;
+      }
+      .info {
+        font-size: 0.9em;
+        color: #555;
+      }
+      .btn-primary {
+        background-color: #5a189a;
+        border: none;
+      }
+      .btn-primary:hover {
+        background-color: #7b2cbf;
+      }
+      .result {
+        margin-top: 20px;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #0a3d62;
+        text-align: center;
+      }
+      .emoji {
+        font-size: 1.2em;
+        margin-left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>🌿 Supply Chain Emission Predictor 🔍</h2>
+      <form action="/predict" method="post">
+        <div class="mb-3">
+          <label class="form-label" for="Substance">Substance (0–3) 🌫️</label>
+          <input type="number" class="form-control" name="Substance" required />
+          <div class="info">0: CO₂, 1: CH₄, 2: N₂O, 3: SF₆</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="Unit">Unit (0–1) ⚖️</label>
+          <input type="number" class="form-control" name="Unit" required />
+          <div class="info">0: kg, 1: metric tons</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="Source"
+            >Source (0–Commodity, 1–Industry) 🏣</label
+          >
+          <input type="number" class="form-control" name="Source" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="Reliability Score"
+            >Reliability Score 📈</label
+          >
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            name="Reliability Score"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="Temporal Correlation"
+            >Temporal Correlation ⏳</label
+          >
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            name="Temporal Correlation"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="Geographical Correlation"
+            >Geographical Correlation 🗺️</label
+          >
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            name="Geographical Correlation"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="Technological Correlation"
+            >Technological Correlation ⚙️</label
+          >
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            name="Technological Correlation"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="Data Collection Correlation"
+            >Data Collection Correlation 📊</label
+          >
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            name="Data Collection Correlation"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="Uncertainty">Uncertainty ❓</label>
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            name="Uncertainty"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="Without Margin"
+            >Supply Chain Emission Factors Without Margin ♻️</label
+          >
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            name="Without Margin"
+            required
+          />
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">
+            🚀 Predict Supply Chain Emission with Margin
+          </button>
+        </div>
+      </form>
+      <div class="result">{{ prediction_text }}</div>
+    </div>
+  </body>
+</html>
